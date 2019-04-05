@@ -58,7 +58,7 @@ EXPORT Bloom := MODULE,FORWARD
      * @return Bloom table
      */
     EXPORT bloomrec := RECORD
-      DATA bits { maxlength(tablesize) };
+      DATA bits;
     END;
 
     EXPORT TRANSFORM(bloomrec) addBloom(UNSIGNED4 hash1, UNSIGNED4 hash2, UNSIGNED4 _numhashes = numHashes, UNSIGNED _tablesize=tableSize) := BEGINC++
