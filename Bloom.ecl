@@ -33,7 +33,7 @@ EXPORT Bloom := MODULE,FORWARD
     UNSIGNED DECIMAL6_3 fpProb  := IF (falsePositiveProbability >=0.3, 0.3,
                                        IF (falsePositiveProbability <=0.050, 0.05,
                                            falsePositiveProbability));
-    UNSIGNED _numBits := IF (forceNumHashes = 0, ROUNDUP(-(cardinality*ln((REAL4) fpProb))/POWER(ln(2),2)), forceNumBits);
+    UNSIGNED _numBits := IF (forceNumBits = 0, ROUNDUP(-(cardinality*ln((REAL4) fpProb))/POWER(ln(2),2)), forceNumBits);
 
     /*
      * Return the actual size of the table used, calculated from the parameters to the module
