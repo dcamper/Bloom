@@ -146,9 +146,12 @@ EXPORT Bloom := MODULE,FORWARD
 
   EXPORT buildBloomFilter(UNSIGNED DECIMAL6_3 fpProb,
                           UNSIGNED INTEGER8 cardinality,
-                          VIRTUAL DATASET ds, <?> ANY keyfields) := MODULE
+                          VIRTUAL DATASET ds,
+                          <?> ANY keyfields,
+                          UNSIGNED INTEGER4 forceNumHashes = 0,
+                          UNSIGNED INTEGER4 forceNumBits = 0) := MODULE
 
-    SHARED myBloomFilter := bloomFilter(fpProb, cardinality);
+    SHARED myBloomFilter := bloomFilter(fpProb, cardinality, forceNumHashes, forceNumBits);
     SHARED myBloomRec := myBloomFilter.bloomrec;
     EXPORT UNSIGNED numBits := myBloomFilter.numBits;
     EXPORT UNSIGNED numHashes := myBloomFilter.numHashes;
